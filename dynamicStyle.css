@@ -1,0 +1,155 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.to-top {
+  background: white;
+  position: fixed;
+  bottom: 16px;
+  right: 32px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #1f1f1f;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .4s;
+}
+
+.to-top .active {
+  bottom: 6.5%;
+  pointer-events: auto;
+  opacity: .8;
+  background-color: #cfcfcf
+}
+
+.fas {
+  color: #1f1f1f;
+}
+
+body {
+  background-color: #fdfdfd;
+}
+
+.container {
+  margin: 1% 10%;
+  border: #000000;
+  border-style: solid;
+}
+
+.container div {
+  padding: 2%;
+}
+
+.dayButtons {
+  color: #31364c;
+  /* position: fixed;
+  width:50px;
+  height:50px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f1f1f;
+  padding-top: 9%;
+}
+
+.button {
+  font-size: 4vw;
+  position: relative;
+  padding: 1% 8%;
+  margin: 0% 5%;
+  border-color: #fed141;
+  color: #141b4d;
+  background-color: fdfdfd;
+  /* Hover */
+  transition-duration: 0.4s;
+  border-width: 1%;
+  font-weight: 1vw;
+  border-width: .5vw;
+
+
+}
+
+.button:hover .button1:hover {
+  /* background-color: #fed141; Green */
+  border-color: #c5c7d4;
+  color: #a6192e;
+  border-width: .6vw .5vw;
+  font-weight: bolder;
+}
+
+/* Desktop */
+@media(min-width: 600px) {
+  .button {
+    font-size: 1pc;
+  }
+
+  .dayButtons {
+    padding-top: 4%;
+
+  }
+
+  #findATime:hover .dropdown-content {
+
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+/* Mobile */
+@media(max-width:600px) {
+  .dropdown-content {
+    display: block;
+    height:fit-content;
+  }
+}
+
+.header {
+  margin-top: 4%;
+}
+
+
+.dropdown-content {
+  display: none;
+  height: max-content;
+  z-index: 1;
+
+}
+
+#findATime {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8.5%;
+}
+
+
+.button1 {
+  font-size: 4vw;
+  position: relative;
+  padding: 1% 8%;
+  margin: 0% 5%;
+  border-color: #fed141;
+  color: #141b4d;
+  background-color: fdfdfd;
+  /* Hover */
+  transition-duration: 0.4s;
+  border-width: 1%;
+  font-weight: 1vw;
+  border-width: .5vw;
+}
+
+.title{
+  font-size: 5vw;
+}
+.details{
+  font-size: 4vw;
+}
+.button, .displayDay{
+  font-size: 3vw;
+}
