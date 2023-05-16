@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="stylesAbout.css" />
+        <link rel="stylesheet" href="styleMenu-1.0.css" />
+        <link rel="stylesheet" href="styleIndex-1.1.css">
+        <link rel="stylesheet" href="styleAboutStudents.css">
+        <title>About CS Students</title>
+    </head>
+
+    <body>
+
+        <!-- container -->
+        <div class="navigationBar CNTNR">
+            <!-- START HAMBURGER MENU -->
+            <!-- left side of navigation bar, this will be our menu button that opens our menu -->
+            <div class="burgerIcon CNTNR">
+                <!-- The overlay -->
+                <div id="myNav" class="overlay">
+
+                    <!-- Button to close the overlay navigation -->
+                    <a href="javascript:void(0)" class="closebtn"
+                        onclick="closeNav()">&times;</a>
+
+                    <!-- Overlay content -->
+                    <div class="overlay-content">
+                        <a href="index.html" class="TXT">Home</a>
+                        <a href="dynamicSession.html" class="TXT">Find Sessions</a>
+                        <a href="map_2.html" class="TXT">RHS Map</a>
+                        <a href="about_students.html" class="TXT">Student
+                            Creators</a>
+                    </div>
+
+                </div>
+
+                <!-- Use any element to open/show the overlay navigation menu -->
+                <span onclick="openNav()">
+                    <div id="menuIconPart"></div>
+                    <div id="menuIconPart"></div>
+                    <div id="menuIconPart"></div>
+                </span>
+
+                <script>
+                function openNav() {
+                    document.getElementById("myNav").style.width = "100%";
+                }
+
+                function closeNav() {
+                    document.getElementById("myNav").style.width = "0%";
+                }
+            </script>
+            </div>
+            <!-- END HAMBURGER MENU -->
+
+            <!-- when the screen size is MOBILE, we want to remove the links and add the Hamburger Menu -->
+            <div class="deskTopLinks">
+                <a href="index.html" class="TXT">Home</a>
+                <a href="dynamicSession.html" class="TXT">Find Sessions</a>
+                <a href="map_2.html" class="TXT">RHS Map</a>
+                <a href="about_students.html" class="TXT">Student Creators</a>
+            </div>
+            <!-- our register button goes here, THE MOST IMPORTANT FEATURE -->
+            <!-- container for item Flex Justify-content right -->
+            <div class="right CNTNR">
+                <div class="register TXT">Welcome</div>
+            </div>
+        </div>
+        <!-- end of container -->
+
+        <div class="header">
+            <!-- now sections of information MEAT&POTATOS: -->
+            <div class="section date TXT"> August 7th & 8th, 2023</div>
+
+            <!-- NAME section starts -->
+            <div class="section CNTNR">
+                <!-- the title of the section -->
+
+
+                <div class="iSuck">
+                    <!-- SBCSC LOGO -->
+                    <center><img
+                            id="SBLogo"
+                            class="img"
+                            title="South Bend Community - School Corporation
+                            Logo"
+                            alt="South Bend Community - School Corporation Logo"
+                            src="SBLogo.png"><a href="https://www.sb.school/"></a></center>
+                </div>
+                <div class="title TXT">BTSU Conference</div>
+
+                <div class="sectionTitle TXT"></div>
+
+            </div>
+
+            <div id="lucas_container" class="idCNTNR">
+                <div class="photo-container">
+                    <img src="lucas.jpg">
+                </div>
+                <div id="about_lucas" class="">
+                    <div class="text">Lucas Carpenter is a student at Riley High
+                        School. He has been studying computer science for 5
+                        years and completed 6 MyPLTW Engineering and Computer
+                        Science classes. He enjoys tinkering, building things,
+                        running, and hanging out with his little brother Sam.</div>
+                </div>
+            </div>
+
+            <div id="abby_container" class="idCNTNR">
+                <div class="photo-container">
+                    <img src="abby.jpg">
+                </div>
+                <div class="about_abby">
+                    <div class="text"> Abby is a senior Computer Science student
+                        currently in Independent Study. She has enjoyed CS all
+                        four years, and one of her favorite memories is during
+                        freshman year, when Ms. Haubold and Mr. Ponder co-taught
+                        the intro class. In her free time, she enjoys reading
+                        and spending time with friends.
+                    </div>
+                </div>
+            </div>
+
+            <div id="tiffany_container" class="idCNTNR">
+                <div class="photo-container">
+                    <img src="tiffany.jpg">
+                </div>
+                <div id="about_tiffany" class="">
+                    <div class="text">Tiffany Schmok is a senior at Riley High
+                        School. She has taken computer science classes for four
+                        years. She has played three sports in high school and
+                        enjoys learning about computers.</div>
+                </div>
+            </div>
+
+            <div id="mshaubold_container" class="idCNTNR">
+                <div class="photo-container">
+                    <img src="HauboldHeadshot.jpeg">
+                </div>
+                <div id="about_mshaubold" class="">
+                    <div class="text">Kristen Haubold has been teaching at Riley
+                        High School for ten years and loves to share her love of
+                        coding with teenagers. She is the proud parent of two
+                        young adults and enjoys reading, crafting, and being
+                        outside in her free time.</div>
+                </div>
+            </div>
+
+        </body>
+
+    </html>
