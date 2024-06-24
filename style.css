@@ -1,0 +1,117 @@
+/* BODY BODY BODY */
+body{
+}
+/* \BODY BODY BODY END END END */
+/* navigation bar navigation bar */
+.navbar {
+    position: fixed;
+    /* Fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    transition: top 0.5s;
+    box-shadow: 5px 4px 10px rgb(86, 96, 99);
+    
+    /* Smooth transition effect */
+    z-index: 1000;
+    /* Ensure it stays on top */
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+}
+
+.navbar.hidden {
+    top: -60px; /* Move navbar out of view when hidden */
+}
+/* navigation bar navigation bar END END END*/
+
+
+/* Header Header Header
+-----------------------
+*/
+/* Header Box Qualities */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: antiquewhite;
+/* Navigation Bar Padding To Resolve overlap issue */
+    padding-top: 50px;
+}
+
+/* Header Title Qualities */
+.header .title {
+    font-weight: bolder;
+}
+
+/* Header Content Qualities */
+.header .content {
+    background-color: aqua;
+    font-size: small;
+
+}
+
+/* Header Header Header END END END
+-----------------------
+*/
+
+/* Section Section Section
+--------------------------
+*/
+/* Section Qualities */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+/* Section Title */
+section .title {
+    font-weight: bold;
+}
+
+/* Section Content */
+section .content {
+    font-size: small;
+    background-color: aqua;
+}
+
+/* Section Photo Container Qualities */
+section .container {
+    background-color: blue;
+    padding: 5% 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Container Photo Qualities */
+.container .photo {
+    background-color: blueviolet;
+    border: 2px solid #ccc;
+    display: flex;
+    padding: 3% 3%;
+}
+
+/* Section Section Section END END END
+--------------------------
+*/
+/* Padding Element */
+padding-element {
+    /* Padding */
+    display: block;
+    padding: 20px;
+
+    /* Element Content */
+    text-align: center;
+
+    /* DEBUG BELOW */
+    /* background-color: lightblue; */
+    /* border: 2px solid navy; */
+}
