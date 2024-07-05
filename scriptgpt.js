@@ -83,4 +83,28 @@ document.addEventListener('DOMContentLoaded', () => {
     window.onload = function() {
         closeOverlay();
     }
+
+
+    // DROP DOWN 
+    document.addEventListener("DOMContentLoaded", function() {
+        const dropdownBtn = document.getElementById('dropdownBtn');
+        const dropdownContent = document.getElementById('dropdownContent');
+        const dropdown = document.querySelector('.dropdown');
+
+        dropdownBtn.addEventListener('click', function() {
+            dropdown.classList.toggle('active');
+        });
+
+        // Close the dropdown menu when clicking outside of it
+        window.addEventListener('click', function(event) {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    });
+
+    // DROP DOWN END END
+
+
+
 });
