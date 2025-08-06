@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming & Technology | Lucas Carpenter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/main.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid #6366f1;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        .card h3 {
+            color: #2a3a8c;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .tech-tag {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .back-link {
+            margin: 2rem auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="container">
+            <h1>Programming & Technology</h1>
+            <p>Building solutions that bridge creativity and functionality</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <h3>🌐 Web Development</h3>
+                <p>Full-stack web applications, responsive websites, and modern web experiences using cutting-edge technologies.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Next.js</span>
+                </div>
+                <a href="#" class="btn">View Projects</a>
+            </div>
+
+            <div class="card">
+                <h3>📱 Mobile Apps</h3>
+                <p>Native and cross-platform mobile applications for iOS and Android, focusing on user experience and performance.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React Native</span>
+                    <span class="tech-tag">Swift</span>
+                    <span class="tech-tag">Kotlin</span>
+                    <span class="tech-tag">Flutter</span>
+                </div>
+                <a href="#" class="btn">Coming Soon</a>
+            </div>
+
+            <div class="card">
+                <h3>🔓 Open Source</h3>
+                <p>Community contributions, personal projects, and collaborative development on GitHub and other platforms.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">GitHub</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Documentation</span>
+                </div>
+                <a href="https://github.com/lucascarpenter" class="btn">View GitHub</a>
+            </div>
+
+            <div class="card">
+                <h3>🤖 AI & Machine Learning</h3>
+                <p>Machine learning models, AI experiments, and intelligent applications that solve real-world problems.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                </div>
+                <a href="#" class="btn">Coming Soon</a>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html" class="btn">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Work | Lucas Carpenter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/main.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        .card h3 {
+            color: #2a3a8c;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .back-link {
+            margin: 2rem auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="container">
+            <h1>Creative Work</h1>
+            <p>Exploring the intersection of art, technology, and storytelling</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <h3>📸 Photography</h3>
+                <p>Client galleries, portfolio work, and personal creative projects spanning portraits, landscapes, events, and experimental photography.</p>
+                <a href="photographyLucas.html" class="btn">View Portfolio</a>
+            </div>
+
+            <div class="card">
+                <h3>🎨 Design</h3>
+                <p>UI/UX design, graphic design, branding projects, and visual identity work for clients and personal projects.</p>
+                <a href="#" class="btn">Coming Soon</a>
+            </div>
+
+            <div class="card">
+                <h3>🎬 Video & Film</h3>
+                <p>Cinematography, video editing, motion graphics, and visual storytelling projects for various clients and creative endeavors.</p>
+                <a href="#" class="btn">Coming Soon</a>
+            </div>
+
+            <div class="card">
+                <h3>🖌️ Art & Illustration</h3>
+                <p>Digital art, sketches, illustrations, and creative experiments using various tools and techniques.</p>
+                <a href="#" class="btn">Coming Soon</a>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html" class="btn">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

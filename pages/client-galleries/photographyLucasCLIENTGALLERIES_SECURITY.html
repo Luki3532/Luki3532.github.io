@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lucas Photography | Client Galleries</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+    <header>
+        <nav style="text-align: left; margin-bottom: 1rem;">
+            <a href="../photographyLucas.html" style="color: var(--accent); text-decoration: none; font-weight: 600;">← Back to Photography</a>
+        </nav>
+        <h1>Lucas Photography</h1>
+        <p>Client Galleries Portal</p>
+    </header>
+    <div class="container">
+        <input class="search-bar" type="text" placeholder="Search for your name..." id="searchInput" autocomplete="off" />
+        <ul class="client-list" id="clientList">
+            <!-- Client items will be injected here -->
+        </ul>
+        <div style="margin-top:2.5rem; text-align:center;">
+            <a href="../../index.html" class="back-button">&#8592; Back to Landing Page</a>
+        </div>
+    </div>
+
+    <!-- Modal for password entry -->
+    <div class="modal-bg" id="modalBg">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="close" id="closeModal" aria-label="Close">&times;</button>
+            <h2 id="modalTitle">Enter Password</h2>
+            <div class="error" id="modalError"></div>
+            <input type="password" id="passwordInput" placeholder="Password" autocomplete="off" />
+            <button id="submitPassword">Access Gallery</button>
+        </div>
+    </div>
+
+    <script>
+        // Clients will be loaded from CSV as objects: { name, password }
+        let clients = [];
+
+        // Check password for selected client
+        function checkPassword(clientName, password) {
+            const client = clients.find(c => c.name === clientName);
+            if (!client) return false;
+            return client.password === password;
+        }
+
+        // Load clients from CSV file (name,password per line)
+        function loadClientsFromCSV(csvPath = '../../data/clients.csv') {
+            fetch(csvPath)
+                .then(response => {
+                    if (!response.ok) throw new Error('CSV file not found.');
+                    return response.text();
+                })
+                .then(text => {
+                    // Parse CSV: skip header row, handle name,password,files format
+                    const lines = text.split(/\r?\n/)
+                        .map(line => line.trim())
+                        .filter(line => line.length > 0);
+                    
+                    // Skip header row (first line)
+                    const dataLines = lines.slice(1);
+                    
+                    clients = dataLines.map(line => {
+                        const parts = line.split(',');
+                        const name = parts[0] ? parts[0].trim() : '';
+                        const password = parts[1] ? parts[1].trim() : '';
+                        const files = parts.slice(2).filter(f => f && f.trim()); // Get remaining files
+                        return { 
+                            name, 
+                            password, 
+                            files: files.map(f => f.trim()) 
+                        };
+                    })
+                    .filter(c => c.name.length > 0 && c.password.length > 0)
+                    .sort((a, b) => a.name.localeCompare(b.name));
+                    
+                    renderClients();
+                })
+                .catch(err => {
+                    console.error('Error loading clients:', err);
+                    // Fallback: show sample clients for demo purposes
+                    clients = [
+                        { name: "Demo Client", password: "demo123", files: ["/files/demo/file1.jpg", "/files/demo/file2.jpg"] },
+                        { name: "Sample User", password: "sample456", files: ["/files/sample/file1.jpg"] }
+                    ];
+                    renderClients();
+                });
+        }
+
+        // DOM elements
+        const clientList = document.getElementById('clientList');
+        const searchInput = document.getElementById('searchInput');
+        const modalBg = document.getElementById('modalBg');
+        const closeModal = document.getElementById('closeModal');
+        const modalError = document.getElementById('modalError');
+        const passwordInput = document.getElementById('passwordInput');
+        const submitPassword = document.getElementById('submitPassword');
+        let selectedClient = null;
+
+        // Render client list
+        function renderClients(filter = "") {
+            clientList.innerHTML = "";
+            const filtered = clients.filter(c =>
+                c.name.toLowerCase().includes(filter.toLowerCase())
+            );
+            if (filtered.length === 0) {
+                if (clients.length === 0) {
+                    clientList.innerHTML = `
+                        <li style="text-align:center;color:#666;padding:2rem;">
+                            <div style="font-size:3rem;margin-bottom:1rem;">📂</div>
+                            <div style="font-size:1.2rem;margin-bottom:0.5rem;">No client galleries available</div>
+                            <div style="font-size:0.9rem;opacity:0.7;">Contact Lucas to set up your gallery access</div>
+                        </li>
+                    `;
+                } else {
+                    clientList.innerHTML = `
+                        <li style="text-align:center;color:#666;padding:2rem;">
+                            <div style="font-size:2rem;margin-bottom:1rem;">🔍</div>
+                            <div>No clients found matching "${filter}"</div>
+                        </li>
+                    `;
+                }
+                return;
+            }
+            filtered.forEach(c => {
+                const li = document.createElement('li');
+                li.className = 'client-item';
+                const fileCount = c.files && c.files.length > 0 ? c.files.length : 0;
+                const fileText = fileCount === 1 ? '1 file' : `${fileCount} files`;
+                li.innerHTML = `
+                    <button class="client-btn" data-client="${c.name}">
+                        <div>
+                            <span style="display: block; font-size: 1.1rem;">${c.name}</span>
+                            <span style="display: block; font-size: 0.85rem; opacity: 0.7; font-weight: 400;">${fileText}</span>
+                        </div>
+                        <span>🔒</span>
+                    </button>
+                `;
+                clientList.appendChild(li);
+            });
+        }
+
+        // Search functionality
+        searchInput.addEventListener('input', e => {
+            renderClients(e.target.value);
+        });
+
+        // Open modal on client click
+        clientList.addEventListener('click', e => {
+            const btn = e.target.closest('.client-btn');
+            if (!btn) return;
+            selectedClient = btn.getAttribute('data-client');
+            modalError.textContent = "";
+            passwordInput.value = "";
+            modalBg.classList.add('active');
+            passwordInput.focus();
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modalBg.classList.remove('active');
+            selectedClient = null;
+        });
+        modalBg.addEventListener('click', e => {
+            if (e.target === modalBg) {
+                modalBg.classList.remove('active');
+                selectedClient = null;
+            }
+        });
+
+        // Submit password
+        submitPassword.addEventListener('click', () => {
+            if (!passwordInput.value) {
+                modalError.textContent = "Please enter your password.";
+                passwordInput.focus();
+                return;
+            }
+            if (!selectedClient) {
+                modalError.textContent = "No client selected.";
+                return;
+            }
+            
+            // Disable button during processing
+            submitPassword.disabled = true;
+            submitPassword.textContent = "Checking...";
+            
+            // Simulate processing time for better UX
+            setTimeout(() => {
+                if (checkPassword(selectedClient, passwordInput.value)) {
+                    // Show success feedback
+                    submitPassword.textContent = "Access Granted!";
+                    submitPassword.style.background = "linear-gradient(135deg, #10b981, #059669)";
+                    
+                    // Show loading bar
+                    modalError.innerHTML = `
+                        <div style='width:100%;background:#e6f7ff;height:4px;overflow:hidden;margin:18px 0 8px 0;border-radius:2px;'>
+                            <div id='loadingBar' style='height:100%;width:0%;background:#10b981;transition:width 1.1s;border-radius:2px;'></div>
+                        </div>
+                        <div style='color:#10b981;font-size:0.9rem;text-align:center;'>Redirecting to your gallery...</div>
+                    `;
+                    
+                    let bar = document.getElementById('loadingBar');
+                    setTimeout(() => {
+                        if(bar) bar.style.width = '100%';
+                    }, 100);
+                    
+                    setTimeout(() => {
+                        // Redirect to dynamic gallery page with client slug
+                        const slug = selectedClient.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                        window.location.href = `gallery.html?client=${slug}`;
+                    }, 1400);
+                } else {
+                    // Show error feedback
+                    submitPassword.textContent = "Access Gallery";
+                    submitPassword.style.background = "linear-gradient(135deg, #6366f1, #8b5cf6)";
+                    submitPassword.disabled = false;
+                    modalError.textContent = "❌ Incorrect password. Please try again.";
+                    passwordInput.focus();
+                    passwordInput.select();
+                }
+            }, 500); // Small delay for better UX
+        });
+
+        // Enter key submits password
+        passwordInput.addEventListener('keydown', e => {
+            if (e.key === "Enter") submitPassword.click();
+        });
+
+        // Initial render: try to load from CSV
+        loadClientsFromCSV();
+
+        // Accessibility: focus trap in modal
+        modalBg.addEventListener('keydown', function(e) {
+            if (!modalBg.classList.contains('active')) return;
+            if (e.key === "Tab") {
+                const focusable = modalBg.querySelectorAll('button, input');
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey) {
+                    if (document.activeElement === first) {
+                        last.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === last) {
+                        first.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+            if (e.key === "Escape") {
+                modalBg.classList.remove('active');
+                selectedClient = null;
+            }
+        });
+    </script>
+</body>
+</html>

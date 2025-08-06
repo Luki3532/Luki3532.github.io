@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Client Photo Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/main.css">
+<style>
+  body {
+    background: #f7f7f9;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  .gallery-outer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1rem 2rem 1rem;
+  }
+  .gallery-card {
+    background: #fff;
+    border-radius: 1.2rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+    padding: 2.5rem 2.2rem 2.2rem 2.2rem;
+    margin: 0 auto;
+    max-width: 540px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .gallery-card h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    font-size: 2.1rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+  }
+  .gallery-card p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  .button {
+    background: #f7f7f7;
+    color: #222;
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    max-width: 320px;
+    text-align: center;
+    padding: 0.9rem 1.3rem;
+    border-radius: 0.7rem;
+    font-size: 1.08rem;
+    font-weight: 500;
+    border: 1.5px solid #e6e6f0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    transition: background 0.18s, box-shadow 0.18s, color 0.18s, transform 0.15s;
+    cursor: pointer;
+  }
+  .button:hover, .button:focus {
+    background: #e0e7ff;
+    color: #2a3a8c;
+    box-shadow: 0 2px 8px rgba(42,58,140,0.08);
+    border-color: #b3baf7;
+    outline: none;
+    transform: translateY(-2px) scale(1.03);
+  }
+  .back-btn {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 900;
+    text-decoration: none;
+    color: #222;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+    background: rgba(255,255,255,0.85);
+    border-radius: 5px;
+    padding: 6px 12px 6px 8px;
+    box-shadow: 0 2px 8px #0001;
+    transition: opacity 0.2s;
+    min-width: 0;
+  }
+  .back-btn:hover {
+    opacity: 1;
+    background: #e0e7ff;
+  }
+  .info-tip {
+    background: #fffbe6;
+    color: #8a6d1b;
+    border: 1px solid #ffe58f;
+    border-radius: 6px;
+    padding: 12px 18px;
+    margin-top: 28px;
+    font-size: 1em;
+    text-align: center;
+  }
+  .modal-bg {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.35);
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-bg.active {
+    display: flex;
+  }
+  .modal {
+    background: #fff;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 32px #0002;
+    min-width: 320px;
+    max-width: 95vw;
+    position: relative;
+    text-align: center;
+  }
+  @media (max-width: 700px) {
+    .gallery-card {
+      padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    }
+    .gallery-card h1 {
+      font-size: 1.3rem;
+    }
+    .button {
+      font-size: 1rem;
+      padding: 0.8rem 0.7rem;
+    }
+    .back-btn {
+      left: 8px;
+      bottom: 8px;
+      padding: 5px 8px 5px 6px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="gallery-outer">
+    <div id="mobileWarning" class="modal-bg">
+      <div class="modal">
+        <span style="font-size:2em;">⚠️</span><br>
+        <strong>Stop!</strong><br><br>
+        This website is designed for desktop/laptop screens.<br>
+        Downloading all the photos may not work well on a phone or tablet.<br><br>
+        <strong>Please use a desktop or laptop for the best experience.</strong><br><br>
+        <button id="continueMobile" class="button">Continue Anyway</button>
+      </div>
+    </div>
+    <div class="gallery-card">
+      <h1 id="galleryTitle">📸 <em>Client's</em> Photos</h1>
+      <p id="galleryDesc">Click the button below to download all your photos:</p>
+      <a id="downloadAll" class="button">Download All Photos</a>
+      <div id="downloadLinks" style="display:none;"></div>
+      <div id="infoBar" style="text-align:center;max-width:600px;margin:0 auto 2.5rem auto;">
+        <a id="goBackBtn" href="photographyLucasCLIENTGALLERIES_SECURITY.html" class="back-btn">
+          <span style="font-size:1.2em;margin-right:6px;">&#8592;</span> <span style="font-size:1em;">Go Back</span>
+        </a>
+        <span style="font-size:1.3em;">👋</span> <span id="greeting">Hey there!</span><br>
+        <hr style="border: none; border-top: 1px solid #b3e0ff; margin: 10px 0;">
+        It’s Lucas. I made this site to get you all your photos easily and securely.<br>
+        Hit <strong>Download All Photos</strong> and your browser will ask where to save each file.<br>
+        (Making a folder first helps!)<br>
+        Enjoy!
+        <div class="info-tip">
+          Don’t worry if you see a bunch of pop-ups—your browser just wants you to pick where to save each file!
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Mobile warning logic
+    function isSmallScreen() {
+      return window.innerWidth < 700;
+    }
+    function showMobileWarning() {
+      document.getElementById('mobileWarning').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    function hideMobileWarning() {
+      document.getElementById('mobileWarning').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    if (isSmallScreen()) {
+      showMobileWarning();
+    }
+    document.getElementById('continueMobile').onclick = hideMobileWarning;
+    window.addEventListener('resize', function() {
+      if (isSmallScreen()) {
+        showMobileWarning();
+      } else {
+        hideMobileWarning();
+      }
+    });
+    // --- LOGIC ---
+    // Get client slug from URL (?client=deven-caparell)
+    function getClientSlug() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('client');
+    }
+
+    // Parse CSV line into client object: { name, password, links[] }
+    function parseClientLine(line) {
+      // CSV: name,password,link1,link2,...
+      const parts = line.split(',').map(s => s.trim());
+      if (parts.length < 2) return null;
+      return {
+        name: parts[0],
+        password: parts[1],
+        links: parts.slice(2).filter(x => x)
+      };
+    }
+
+    // Slugify client name for URL
+    function slugify(name) {
+      return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+
+    // Load clients from CSV and render gallery for the current slug
+    function loadClientsAndRender() {
+      fetch('../../data/clients.csv')
+        .then(r => {
+          if (!r.ok) throw new Error('CSV not found');
+          return r.text();
+        })
+        .then(text => {
+          const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l);
+          if (lines.length < 2) throw new Error('No clients');
+          const header = lines[0];
+          const clients = lines.slice(1).map(parseClientLine).filter(Boolean);
+          const slug = getClientSlug();
+          const client = clients.find(c => slugify(c.name) === slug);
+          if (!client) {
+            document.getElementById('galleryTitle').innerHTML = 'Client Not Found';
+            document.getElementById('galleryDesc').innerHTML = 'Please check your link or contact Lucas.';
+            document.getElementById('greeting').innerText = '';
+            document.getElementById('downloadAll').style.display = 'none';
+            return;
+          }
+          // Use only the first name for the title
+          const firstName = client.name.split(' ')[0];
+          document.getElementById('galleryTitle').innerHTML = `📸 <em>${firstName}'s</em> Photos`;
+          document.getElementById('greeting').innerText = `Hey ${firstName}!`;
+          // Build download links
+          const linksDiv = document.getElementById('downloadLinks');
+          linksDiv.innerHTML = client.links.map(link => `<a href="${link}" download></a>`).join('');
+          // Show/hide download button
+          document.getElementById('downloadAll').style.display = client.links.length ? '' : 'none';
+        })
+        .catch(() => {
+          document.getElementById('galleryTitle').innerHTML = 'Client Not Found';
+          document.getElementById('galleryDesc').innerHTML = 'Please check your link or contact Lucas.';
+          document.getElementById('greeting').innerText = '';
+          document.getElementById('downloadAll').style.display = 'none';
+        });
+    }
+
+    document.getElementById('downloadAll').addEventListener('click', function() {
+      const links = document.querySelectorAll('#downloadLinks a');
+      links.forEach(link => {
+        const url = link.href;
+        const filename = link.getAttribute('download') || url.split('/').pop();
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      });
+    });
+
+    // On load
+    loadClientsAndRender();
+  </script>
+</body>
+</html>

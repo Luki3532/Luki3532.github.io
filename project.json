@@ -1,0 +1,48 @@
+{
+  "name": "Lucas Carpenter Landing Page",
+  "version": "2.0.0",
+  "description": "Personal landing page with portfolio sections and client galleries",
+  "main": "index.html",
+  "directories": {
+    "assets": "Static assets (CSS, JS, images, fonts)",
+    "pages": "All HTML pages",
+    "data": "Data files (CSV, JSON)",
+    "php": "Server-side scripts",
+    "src": "Development source files"
+  },
+  "structure": {
+    "assets/css/": "Stylesheets",
+    "assets/js/": "JavaScript files",
+    "assets/images/": "Image assets",
+    "assets/fonts/": "Custom fonts",
+    "pages/directories/": "Directory landing pages",
+    "pages/client-galleries/": "Photography client system",
+    "pages/admin/": "Admin interface pages",
+    "data/": "CSV and data files",
+    "php/": "PHP backend scripts"
+  },
+  "features": [
+    "Responsive design",
+    "Directory system with 4 main categories",
+    "Client gallery system with password protection",
+    "Contact form with PHP backend",
+    "Under construction pages for incomplete sections",
+    "Mobile-first responsive design"
+  ],
+  "technologies": {
+    "frontend": ["HTML5", "CSS3", "JavaScript ES6+"],
+    "backend": ["PHP"],
+    "fonts": ["Google Fonts (Montserrat, Roboto)"],
+    "data": ["CSV files"]
+  },
+  "deployment": {
+    "development": "Open index.html in browser",
+    "production": "Upload to web server with PHP support"
+  },
+  "maintenance": {
+    "addNewPage": "Add to appropriate /pages subdirectory",
+    "updateStyling": "Edit /assets/css/main.css",
+    "addClientGallery": "Update /data/clients.csv",
+    "addAssets": "Place in appropriate /assets subdirectory"
+  }
+}

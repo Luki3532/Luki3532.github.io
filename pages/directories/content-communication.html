@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content & Communication | Lucas Carpenter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/main.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid #10b981;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        .card h3 {
+            color: #2a3a8c;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .topic-tag {
+            background: #d1fae5;
+            color: #047857;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .back-link {
+            margin: 2rem auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="container">
+            <h1>Content & Communication</h1>
+            <p>Sharing knowledge and connecting with communities through various mediums</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <h3>✍️ Writing</h3>
+                <p>Blog posts, technical articles, essays, and documentation covering technology, creativity, and personal insights.</p>
+                <div class="topics">
+                    <span class="topic-tag">Tech Tutorials</span>
+                    <span class="topic-tag">Personal Essays</span>
+                    <span class="topic-tag">Industry Insights</span>
+                </div>
+                <a href="#" class="btn">Read Articles</a>
+            </div>
+
+            <div class="card">
+                <h3>🎤 Speaking</h3>
+                <p>Conference talks, workshop presentations, and speaking engagements on technology, creativity, and professional development.</p>
+                <div class="topics">
+                    <span class="topic-tag">Tech Conferences</span>
+                    <span class="topic-tag">Workshops</span>
+                    <span class="topic-tag">Meetups</span>
+                </div>
+                <a href="#" class="btn">View Talks</a>
+            </div>
+
+            <div class="card">
+                <h3>🎧 Podcasts</h3>
+                <p>Audio content, guest appearances, and podcast hosting covering various topics in technology and creative industries.</p>
+                <div class="topics">
+                    <span class="topic-tag">Tech Discussions</span>
+                    <span class="topic-tag">Guest Episodes</span>
+                    <span class="topic-tag">Industry Trends</span>
+                </div>
+                <a href="#" class="btn">Listen Now</a>
+            </div>
+
+            <div class="card">
+                <h3>📚 Tutorials</h3>
+                <p>Educational content, how-to guides, and step-by-step tutorials to help others learn and grow in their technical journey.</p>
+                <div class="topics">
+                    <span class="topic-tag">Coding Tutorials</span>
+                    <span class="topic-tag">Design Guides</span>
+                    <span class="topic-tag">Best Practices</span>
+                </div>
+                <a href="#" class="btn">Start Learning</a>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html" class="btn">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
